@@ -48,8 +48,13 @@ bau
 
 .Task("clobber").DependsOn("clean").Do(() => DeleteDirectory(output))
 
-.Exec("restore").Do(exec => exec
+.Exec("restore top level packages").Do(exec => exec
     .Run(nugetCommand).With("restore", "-PackagesDirectory", "packages", "packages.config"))
+
+.Exec("restore solution").Do(exec => exec
+    .Run(nugetCommand).With("restore", solution))
+
+.Task("restore").DependsOn("restore top level packages", "restore solution")
 
 .MSBuild("build").DependsOn("clean", "restore", "logs").Do(msb =>
     {
