@@ -1,0 +1,11 @@
+obj
+bin
+artifacts
+
+*.suo
+*.user
+artifacts
+/packages/*
+!/packages/NuGet.CommandLine.2.8.6
+
+/scriptcs_packages
