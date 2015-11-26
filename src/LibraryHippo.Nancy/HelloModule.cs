@@ -6,7 +6,7 @@
     {
         public HelloModule()
         {
-            Get["/"] = parameters => "Hello World";
+            this.Get["/"] = parameters => "Hello World";
         }
     }
 }
